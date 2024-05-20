@@ -17,7 +17,7 @@ const Home = async () => {
           <h1 className="text-6xl tracking-wider font-black text-primary-100">
             Welcome Back!
           </h1>
-          <p className="pt-4 text-dark">{session?.user?.email}</p>
+          <p className="pt-4 text-dark-100">{session?.user?.email}</p>
         </div>
       </div>
     </section>

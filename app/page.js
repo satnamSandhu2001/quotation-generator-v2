@@ -4,7 +4,6 @@ import bg_img from '@/public/assets/images/bg.jpg';
 import { useContext, useState } from 'react';
 import { AuthContext } from '@/context/authContext';
 import { InputPrimary } from '@/components/ui/Input';
-import { register } from '@/actions/auth.action';
 import ButtonPrimary from '@/components/ui/ButtonPrimary';
 
 export default function Home() {
@@ -30,13 +29,6 @@ export default function Home() {
 
   return (
     <>
-      <button
-        onClick={async () => {
-          await register();
-        }}
-      >
-        Register
-      </button>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
         <Image
           src={bg_img}

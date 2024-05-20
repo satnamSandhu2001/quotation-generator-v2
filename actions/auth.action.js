@@ -3,9 +3,10 @@
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import { loginSchema } from '@/lib/zod/schema';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { AuthError } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 export const register = async () => {
   try {
@@ -49,5 +50,16 @@ export const login = async (values) => {
     }
     console.log(error.message);
     throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    await signOut({ redirectTo: '/' });
+  } catch (error) {
+    console.log(error.message);
+    if (error.message.includes('NEXT_REDIRECT')) {
+      redirect('/');
+    }
   }
 };

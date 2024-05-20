@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { quotationsSchema } from '@/lib/zod/schema';
-const Component = React.lazy(() => import('./_lib/Component'));
+import dynamic from 'next/dynamic';
+const Component = dynamic(() => import('./_lib/Component'), { ssr: false });
 
 const initialParticularValue = [
   {

@@ -88,10 +88,11 @@ export const getQuotationById = async (id) => {
 
 export const deleteQuotation = async (id) => {
   try {
-    if (!id) return;
+    if (!id) return { error: 'Invalid ID' };
     await prisma.quotation.delete({
       where: { id },
     });
+
     return { success: true };
   } catch (error) {
     console.log(error.message);

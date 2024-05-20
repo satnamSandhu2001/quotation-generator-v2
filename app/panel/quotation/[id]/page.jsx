@@ -1,7 +1,7 @@
 'use client';
 
 import { getQuotationById } from '@/actions/quotation.action';
-import QuotationSkelton from '@/components/ui/skelton/QuotationSkelton';
+import QuotationSkelton from '@/components/ui/skelton/quotation/QuotationSkelton';
 import { quotationsSchema } from '@/lib/zod/schema';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';

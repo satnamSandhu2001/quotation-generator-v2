@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary-100': '#f97316',
-        'primary-200': '#dd5a00',
-        dark: '#2b2b2b',
+        'primary-100': 'var(--primary-100)',
+        'primary-200': 'var(--primary-200)',
+        'dark-100': 'var(--dark-100)',
+        'dark-200': 'var(--dark-200)',
       },
       fontFamily: {
         sans: ['var(--font-dejaVuSans)'],
@@ -41,5 +42,5 @@ module.exports = {
       });
     },
   ],
-  darkMode: 'class',
+  dark: 'class',
 };
