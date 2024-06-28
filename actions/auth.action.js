@@ -10,8 +10,8 @@ import { redirect } from 'next/navigation';
 
 export const register = async () => {
   try {
-    let email = 'satnamsandhu70002@gmail.com';
-    let password = '11223344';
+    let email = '';
+    let password = '';
 
     let hashedPassword = bcrypt.hashSync(password, 10);
     await prisma.user.create({
