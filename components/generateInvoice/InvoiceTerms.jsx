@@ -25,16 +25,24 @@ const InvoiceTerms = () => (
   <View style={styles.titleContainer}>
     <Text style={styles.reportTitle}>Terms & Conditions:</Text>
     <ListItem>
-      Acceptance signifies agreement with these terms & customer will be billed
-      after indicating acceptance of this quote.
+      This quote and these terms & conditions constitute a binding agreement
+      upon client acceptance.
     </ListItem>
     <ListItem>
       A deposit of 50% is required to begin work. The remaining balance is due
-      upon project completion.
+      upon project final testing.
     </ListItem>
     <ListItem>
-      Project scope changes may affect the final cost. I will provide estimates
+      Project scope changes will affect the final cost. I will provide estimates
       for additional work.
+    </ListItem>
+    <ListItem>
+      The source code for the website will be the developer&apos;s property
+      untill full payment associated with the project is completed.
+    </ListItem>
+    <ListItem>
+      Changes requested to the project after 3 months of completion will be
+      considered additional work and billed accordingly.
     </ListItem>
     <ListItem>
       This quote includes third-party costs like domain registration or hosting
