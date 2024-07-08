@@ -5,7 +5,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '@/context/authContext';
 import { InputPrimary } from '@/components/ui/Input';
 import ButtonPrimary from '@/components/ui/ButtonPrimary';
-import { register } from '@/actions/auth.action';
+// import { register } from '@/actions/auth.action';
 
 export default function Home() {
   const { loading, login, error, errors } = useContext(AuthContext);
@@ -30,13 +30,13 @@ export default function Home() {
 
   return (
     <>
-      <button
+      {/* <button
         onClick={() => {
           register();
         }}
       >
         sdfsdfsdf
-      </button>
+      </button> */}
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
         <Image
           src={bg_img}
