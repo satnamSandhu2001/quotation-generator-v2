@@ -30,7 +30,7 @@ export const updateQuotation = async (values) => {
     let validateData = quotationsSchema.safeParse(values);
     if (!validateData.success) return { errors: validateData.error.issues };
 
-    let data = await prisma.$transaction([
+    await prisma.$transaction([
       prisma.quotation.update({
         where: {
           id: values.id,
