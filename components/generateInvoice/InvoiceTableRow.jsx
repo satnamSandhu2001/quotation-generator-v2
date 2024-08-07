@@ -9,36 +9,35 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderLeftWidth: 2,
     borderRightWidth: 2,
-    alignItems: 'center',
+    alignItems: 'stretch',
     fontStyle: 'bold',
     color: '#202020',
+    lineHeight: 1.5,
   },
   title: {
-    fontSize: 12,
+    fontSize: 11,
     paddingVertical: 5,
     paddingHorizontal: 8,
-    width: '35%',
+    width: '30%',
     borderRightColor: borderColor,
     borderRightWidth: 2,
   },
 
   price: {
-    fontSize: 12,
+    fontSize: 11,
     width: '20%',
     textAlign: 'right',
     paddingVertical: 5,
     paddingHorizontal: 8,
-    whiteSpace: 'pre',
   },
 
   description: {
     borderRightColor: borderColor,
     borderRightWidth: 2,
-    fontSize: 12,
+    fontSize: 11,
     paddingVertical: 5,
     paddingHorizontal: 8,
-    width: '45%',
-    whiteSpace: 'pre',
+    width: '50%',
   },
 });
 

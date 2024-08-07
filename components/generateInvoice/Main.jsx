@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-import PdfDocument from './Invoice';
 import { newQuotation, updateQuotation } from '@/actions/quotation.action';
+import Invoice from './Invoice';
 
 export default function Main(props) {
   const [windowDimentions, setwindowDimentions] = useState({ x: 0, y: 0 });
@@ -19,13 +19,10 @@ export default function Main(props) {
         height={windowDimentions.y}
         showToolbar={false}
       >
-        <PdfDocument {...props} />
+        <Invoice {...props} />
       </PDFViewer>
 
-      <PDFDownloadLink
-        document={<PdfDocument {...props} />}
-        fileName={fileName}
-      >
+      <PDFDownloadLink document={<Invoice {...props} />} fileName={fileName}>
         {({ loading }) =>
           loading ? (
             'Loading...'
@@ -38,6 +35,9 @@ export default function Main(props) {
                     firm_name: props.firm_name,
                     total: props.total,
                     particulars: props.particulars,
+                    termsConditions: props.termsConditions,
+                    date: props.date,
+                    currency: props.currency,
                   });
                 } else {
                   await updateQuotation({
@@ -45,6 +45,9 @@ export default function Main(props) {
                     firm_name: props.firm_name,
                     total: props.total,
                     particulars: props.particulars,
+                    termsConditions: props.termsConditions,
+                    date: props.date,
+                    currency: props.currency,
                   });
                 }
               }}

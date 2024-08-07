@@ -73,7 +73,8 @@ function Quotations() {
                       </td>
                       <td className="px-6 py-4 w-full">{item.firm_name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-right">
-                        ₹{item.total}
+                        {item.currency}
+                        {item.total}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap flex items-center justify-end">
                         <Link

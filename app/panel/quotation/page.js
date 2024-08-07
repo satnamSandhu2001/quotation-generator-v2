@@ -7,14 +7,14 @@ const Component = dynamic(() => import('./_lib/Component'), { ssr: false });
 
 const initialParticularValue = [
   {
-    title: 'responsive design',
+    title: 'Responsive design',
     price: 5000,
-    description: 'Desktop, Tablet, Mobile Responsive 5 Pages Design',
+    description: 'Desktop, Tablet, Mobile responsive 5 pages design',
   },
   {
     title: 'Customer Inquiry form with email integration',
     price: 1500,
-    description: 'Visitors can inquire through Customer Support form',
+    description: 'Visitors can inquire through customer support form',
   },
   {
     title: 'Domain and hosting & SSL certificate',
@@ -23,12 +23,27 @@ const initialParticularValue = [
   },
 ];
 
+const initialTermsConditions = [
+  'This quote and these terms & conditions constitute a binding agreement upon client acceptance.',
+  'A deposit of 50% is required to begin work. The remaining balance is due upon project final testing.',
+  'Project scope changes will affect the final cost. I will provide estimates for additional work.',
+  "The source code for the website will be the developer's property untill full payment associated with the project is completed.",
+  'Changes requested to the project after 3 months of completion will be considered additional work and billed accordingly.',
+  'This quote includes third-party costs like domain registration or hosting fees',
+];
+
 export default function Quotation() {
+  const [currency, setcurrency] = useState('Rs.');
   const [firm_name, setfirm_name] = useState('');
   const [total, settotal] = useState(0);
   const [particulars, setparticulars] = useState(initialParticularValue);
+  const [termsConditions, settermsConditions] = useState(
+    initialTermsConditions
+  );
+  const [date, setdate] = useState(new Date().toISOString().substring(0, 10));
   const [errors, seterrors] = useState(null);
-
+  const [isTermsConditionsVisible, setisTermsConditionsVisible] =
+    useState(false);
   const [showPdf, setshowPdf] = useState(false);
 
   const handleTotal = (items) => {
@@ -82,21 +97,40 @@ export default function Quotation() {
     setparticulars([..._particulars]);
     handleTotal(_particulars);
   };
-  const handleAddRow = () => {
-    setparticulars((current) => [
-      ...current,
-      { title: '', price: 0, description: '' },
-    ]);
+  const handleAddRow = (index) => {
+    let _particulars = [...particulars];
+    _particulars.splice(index, 0, { title: '', price: 0, description: '' });
+    setparticulars(_particulars);
+  };
+
+  const handleTermsConditionsChange = (e, i) => {
+    let _terms = [...termsConditions];
+    _terms[i] = e.target.value;
+    settermsConditions([..._terms]);
+  };
+
+  const handleAddTermsRow = (index) => {
+    let _terms = [...termsConditions];
+    _terms.splice(index, 0, '');
+    settermsConditions(_terms);
+  };
+  const handleDeleteTermsRow = (index) => {
+    let _terms = [...termsConditions];
+    _terms.splice(index, 1);
+    settermsConditions(_terms);
   };
 
   const handleFormSubmit = (e) => {
-    handleTotal();
     e.preventDefault();
+    handleTotal();
     seterrors(null);
     let validateFields = quotationsSchema.safeParse({
       firm_name,
       total,
       particulars,
+      date,
+      currency,
+      termsConditions,
     });
     if (!validateFields.success) return seterrors(validateFields.error?.issues);
 
@@ -123,18 +157,32 @@ export default function Quotation() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (errors?.find((error) => error.path.includes('termsConditions'))) {
+      setisTermsConditionsVisible(true);
+    }
+  }, [errors]);
+
   return (
     <>
       <Component
         isNewData={{ isNew: true, id: null }}
         showPdf={showPdf}
         handleFormSubmit={handleFormSubmit}
+        currency={currency}
+        updateCurrency={(value) => {
+          setcurrency(value);
+        }}
         firm_name={firm_name}
         handleFirm_name={handleFirm_name}
-        errors={errors}
+        date={date}
+        updateDate={(value) => {
+          setdate(value);
+        }}
         total={total}
         handleTotal={handleTotal}
         particulars={particulars}
+        errors={errors}
         resetForm={resetForm}
         getBack={getBack}
         handleDeleteRow={handleDeleteRow}
@@ -142,6 +190,17 @@ export default function Quotation() {
         handleTitleChange={handleTitleChange}
         handlePriceChange={handlePriceChange}
         handleDescriptionChange={handleDescriptionChange}
+        handleTermsConditionsChange={handleTermsConditionsChange}
+        termsConditions={termsConditions}
+        hideTermsConditions={() => {
+          setisTermsConditionsVisible(false);
+        }}
+        showTermsConditions={() => {
+          setisTermsConditionsVisible(true);
+        }}
+        isTermsConditionsVisible={isTermsConditionsVisible}
+        handleAddTermsRow={handleAddTermsRow}
+        handleDeleteTermsRow={handleDeleteTermsRow}
       />
     </>
   );

@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
   },
   reportTitle: {
     color: '#000',
-    fontWeight: 'extrabold',
-    fontSize: 14,
+    fontWeight: 'bold',
+    fontSize: 12,
     textAlign: 'center',
     lineHeight: 1.5,
   },
@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
 
 const InvoiceTitle = () => (
   <View style={styles.titleContainer}>
-    <Text style={styles.reportTitle}>[contact@satnamsandhu.com]</Text>
-    <Text style={styles.reportTitle}>[+91 9814185039]</Text>
+    <Text style={styles.reportTitle}>[satnamsandhu70002@gmail.com]</Text>
+    <Text style={styles.reportTitle}>[www.satnamsandhu.com]</Text>
+    <Text style={styles.reportTitle}>[+91 98141-85039]</Text>
   </View>
 );
 

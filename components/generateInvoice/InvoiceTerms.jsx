@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   row: {
     display: 'flex',
     flexDirection: 'row',
-    marginBottom: 3,
+    marginBottom: 5,
+    lineHeight: 1.25,
   },
   bullet: {
     height: '100%',
@@ -19,35 +20,28 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'extrabold',
   },
+  date: {
+    marginTop: 8,
+    textAlign: 'right',
+    fontSize: 11,
+    fontWeight: 'extrabold',
+  },
 });
 
-const InvoiceTerms = () => (
+const InvoiceTerms = (props) => (
   <View style={styles.titleContainer}>
     <Text style={styles.reportTitle}>Terms & Conditions:</Text>
-    <ListItem>
-      This quote and these terms & conditions constitute a binding agreement
-      upon client acceptance.
-    </ListItem>
-    <ListItem>
-      A deposit of 50% is required to begin work. The remaining balance is due
-      upon project final testing.
-    </ListItem>
-    <ListItem>
-      Project scope changes will affect the final cost. I will provide estimates
-      for additional work.
-    </ListItem>
-    <ListItem>
-      The source code for the website will be the developer&apos;s property
-      untill full payment associated with the project is completed.
-    </ListItem>
-    <ListItem>
-      Changes requested to the project after 3 months of completion will be
-      considered additional work and billed accordingly.
-    </ListItem>
-    <ListItem>
-      This quote includes third-party costs like domain registration or hosting
-      fees.
-    </ListItem>
+    {props.termsConditions?.length > 0 &&
+      props.termsConditions.map((t, i) => <ListItem key={i}>{t}</ListItem>)}
+
+    <Text style={styles.date}>
+      Date:{' '}
+      {new Date(props.date).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })}
+    </Text>
   </View>
 );
 

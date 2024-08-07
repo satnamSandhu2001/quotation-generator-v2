@@ -12,15 +12,20 @@ function Page() {
   const { id } = useParams();
   const [data, setdata] = useState(null);
   const [loading, setloading] = useState(true);
-
   const [errors, seterrors] = useState(null);
-
+  const [isTermsConditionsVisible, setisTermsConditionsVisible] =
+    useState(false);
   const [showPdf, setshowPdf] = useState(false);
 
   async function getData() {
     setloading(true);
     let quotation = await getQuotationById(Number(id));
-    setdata(quotation);
+    console.log(quotation.date);
+    setdata({
+      ...quotation,
+      date: quotation.date.toISOString().split('T')[0],
+      termsConditions: quotation?.termsConditions.map((t) => t.text),
+    });
     setloading(false);
   }
   useEffect(() => {
@@ -79,13 +84,41 @@ function Page() {
     setdata(_data);
   };
   const handleAddRow = () => {
-    let _particulars = data?.particulars || [];
+    let _particulars = [...data?.particulars] || [];
     _particulars?.push({
       title: '',
       price: 0,
       description: '',
     });
     let _data = data !== null ? { ...data, particulars: _particulars } : null;
+    setdata(_data);
+  };
+
+  const handleTermsConditionsChange = (e, i) => {
+    let _terms = [...data?.termsConditions] || [];
+    _terms[i] = e.target.value;
+    let _data = data !== null ? { ...data, termsConditions: _terms } : null;
+    setdata(_data);
+  };
+
+  const handleAddTermsRow = (i) => {
+    let _terms = [...data?.termsConditions] || [];
+    _terms.splice(i, 0, '');
+    let _data =
+      data !== null ? { ...data, termsConditions: [..._terms] } : null;
+    setdata(_data);
+  };
+  const handleDeleteTermsRow = (i) => {
+    let _terms = [...data?.termsConditions] || [];
+    if (_terms.length <= 1) {
+      _terms = [''];
+      let _data = data !== null ? { ...data, termsConditions: _terms } : null;
+      setdata(_data);
+      return;
+    }
+    _terms.splice(i, 1);
+    let _data =
+      data !== null ? { ...data, termsConditions: [..._terms] } : null;
     setdata(_data);
   };
 
@@ -97,6 +130,9 @@ function Page() {
       firm_name: data?.firm_name,
       total: data?.total,
       particulars: data?.particulars,
+      date: data?.date,
+      currency: data?.currency,
+      termsConditions: data?.termsConditions,
     });
     if (!validateFields.success) return seterrors(validateFields.error?.issues);
 
@@ -115,6 +151,12 @@ function Page() {
     handleTotal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.particulars]);
+
+  useEffect(() => {
+    if (errors?.find((error) => error.path.includes('termsConditions'))) {
+      setisTermsConditionsVisible(true);
+    }
+  }, [errors]);
 
   return (
     <div>
@@ -138,6 +180,25 @@ function Page() {
           handleTitleChange={handleTitleChange}
           handlePriceChange={handlePriceChange}
           handleDescriptionChange={handleDescriptionChange}
+          currency={data?.currency}
+          updateCurrency={(value) => {
+            setdata((prev) => ({ ...prev, currency: value }));
+          }}
+          date={data?.date}
+          updateDate={(value) => {
+            setdata((prev) => ({ ...prev, date: value }));
+          }}
+          handleTermsConditionsChange={handleTermsConditionsChange}
+          termsConditions={data?.termsConditions}
+          hideTermsConditions={() => {
+            setisTermsConditionsVisible(false);
+          }}
+          showTermsConditions={() => {
+            setisTermsConditionsVisible(true);
+          }}
+          isTermsConditionsVisible={isTermsConditionsVisible}
+          handleAddTermsRow={handleAddTermsRow}
+          handleDeleteTermsRow={handleDeleteTermsRow}
         />
       ) : (
         'Data not found....'

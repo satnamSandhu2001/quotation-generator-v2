@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderRightWidth: 2,
     alignItems: 'center',
-    fontSize: 12,
+    fontSize: 11,
     fontStyle: 'bold',
   },
   description: {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     borderRightColor: borderColor,
     borderRightWidth: 2,
-    fontSize: 12,
+    fontSize: 11,
     paddingVertical: 5,
     fontWeight: 'extrabold',
     paddingHorizontal: 8,
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   total: {
     width: '20%',
     textAlign: 'right',
-    fontSize: 12,
+    fontSize: 11,
     paddingVertical: 5,
     paddingHorizontal: 8,
     fontWeight: 'extrabold',
@@ -38,7 +38,10 @@ const InvoiceTableFooter = (props) => {
   return (
     <View style={styles.row}>
       <Text style={styles.description}>Total </Text>
-      <Text style={styles.total}>Rs. {props.total} /-</Text>
+      <Text style={styles.total}>
+        {props.currency}
+        {props.total} /-
+      </Text>
     </View>
   );
 };

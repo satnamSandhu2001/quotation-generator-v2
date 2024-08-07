@@ -35,19 +35,19 @@ export default function Home() {
           register();
         }}
       >
-        sdfsdfsdf
+        Register
       </button> */}
-      <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+      <div className="relative flex flex-col justify-center min-h-screen overflow-hidden px-4 sm:px-0">
         <Image
           src={bg_img}
           alt=""
           fill
           priority
-          className="z-0 w-full h-full object-cover object-left-bottom lg:object-center brightness-90"
+          className="z-0 w-full h-full object-cover object-left-bottom lg:object-center"
         />
-        <div className="z-10 relative w-full px-8 py-12 m-auto bg-black/70 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl lg:max-w-xl text-white">
-          <h1 className="text-3xl font-semibold text-center text-primary-100 uppercase">
-            sign in
+        <div className="z-10 relative w-full px-5 sm:px-8 py-12 m-auto bg-black bg-opacity-50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl max-w-md md:max-w-lg lg:max-w-xl text-white">
+          <h1 className="text-4xl font-semibold text-center text-primary-100  tracking-wide">
+            Sign-in
           </h1>
           <form onSubmit={(e) => submitHandler(e)} className="mt-6">
             <InputPrimary

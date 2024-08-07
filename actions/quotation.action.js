@@ -7,13 +7,17 @@ export const newQuotation = async (values) => {
   try {
     let validateData = quotationsSchema.safeParse(values);
     if (!validateData.success) return { errors: validateData.error.issues };
-
     await prisma.quotation.create({
       data: {
         firm_name: validateData.data.firm_name,
         total: validateData.data.total,
+        date: new Date(validateData.data.date),
+        currency: validateData.data.currency,
         particulars: {
           create: validateData.data.particulars,
+        },
+        termsConditions: {
+          create: validateData.data.termsConditions.map((t) => ({ text: t })),
         },
       },
     });
@@ -38,6 +42,8 @@ export const updateQuotation = async (values) => {
         data: {
           firm_name: values.firm_name,
           total: values.total,
+          date: new Date(validateData.data.date),
+          currency: validateData.data.currency,
         },
       }),
       prisma.particular.deleteMany({
@@ -46,6 +52,15 @@ export const updateQuotation = async (values) => {
       prisma.particular.createMany({
         data: validateData.data.particulars.map((part) => ({
           ...part,
+          quotation_id: values.id,
+        })),
+      }),
+      prisma.termsConditions.deleteMany({
+        where: { quotation_id: values.id },
+      }),
+      prisma.termsConditions.createMany({
+        data: validateData.data.termsConditions.map((t) => ({
+          text: t,
           quotation_id: values.id,
         })),
       }),
@@ -62,6 +77,11 @@ export const getAllQuotations = async () => {
     const quotations = await prisma.quotation.findMany({
       include: {
         particulars: true,
+        termsConditions: {
+          select: {
+            text: true,
+          },
+        },
       },
     });
     return quotations;
@@ -73,10 +93,15 @@ export const getAllQuotations = async () => {
 
 export const getQuotationById = async (id) => {
   try {
-    const quotation = await prisma.quotation.findUnique({
+    const quotation = await prisma.quotation.findFirst({
       where: { id },
       include: {
         particulars: true,
+        termsConditions: {
+          select: {
+            text: true,
+          },
+        },
       },
     });
     return quotation;

@@ -1,3 +1,4 @@
+import ButtonPrimary from '@/components/ui/ButtonPrimary';
 import DeleteIcon from '@/components/ui/DeleteIcon';
 import { InputPrimary } from '@/components/ui/Input';
 import React from 'react';
@@ -9,24 +10,37 @@ const Particulars = ({
   handleDescriptionChange,
   handleTitleChange,
   handlePriceChange,
+  handleAddRow,
   errors,
 }) => {
   return (
     <div className="border border-black/30 p-4 rounded-md mb-4 hover:shadow-lg transition-shadow">
-      <div className="mb-2 flex items-start gap-x-4">
-        <div className="flex flex-col gap-y-3">
-          <p className="w-8 aspect-square bg-slate-300 flex items-center justify-center text-lg leading-none rounded-md">
-            {index + 1}
-          </p>
-          <button
-            type="button"
-            className="w-8 aspect-square flex items-center justify-center text-lg leading-none rounded-md bg-red-500 hover:bg-red-600 transition-colors cursor-pointer"
-            onClick={() => {
-              handleDeleteRow(index);
-            }}
-          >
-            <DeleteIcon />
-          </button>
+      <div className="mb-2 flex items-stretch gap-x-4">
+        <div className="flex flex-col justify-between gap-y-3 h-full">
+          <div className="flex flex-col gap-y-3">
+            <p className="w-8 aspect-square bg-slate-300 flex items-center justify-center text-lg leading-none rounded-md">
+              {index + 1}
+            </p>
+            <button
+              type="button"
+              className="w-8 aspect-square flex items-center justify-center text-lg leading-none rounded-md bg-red-500 hover:bg-red-600 transition-colors cursor-pointer"
+              onClick={() => {
+                handleDeleteRow(index);
+              }}
+            >
+              <DeleteIcon />
+            </button>
+          </div>
+          <div className="self-end">
+            <ButtonPrimary
+              buttonClass="w-8 aspect-square flex items-center justify-center text-lg leading-none rounded-md !border-green-500 !bg-green-500 hover:!bg-green-600 transition-colors cursor-pointer"
+              onClick={() => {
+                handleAddRow(index + 1);
+              }}
+            >
+              +
+            </ButtonPrimary>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-[1fr_175px] w-full justify-between">
           <InputPrimary
@@ -79,7 +93,6 @@ const Particulars = ({
                     error.path?.[2] == 'description'
                 )?.message
               }
-              rows={1}
               InputClass="!bg-transparent border-black/20"
             />
           </div>

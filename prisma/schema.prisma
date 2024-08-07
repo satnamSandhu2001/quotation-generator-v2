@@ -16,10 +16,13 @@ model User {
 }
 
 model Quotation {
-  id          Int          @id @default(autoincrement())
-  firm_name   String
-  total       Int
-  particulars Particular[]
+  id              Int               @id @default(autoincrement())
+  firm_name       String
+  total           Int
+  particulars     Particular[]
+  termsConditions TermsConditions[]
+  date            DateTime
+  currency        String
 }
 
 model Particular {
@@ -29,4 +32,11 @@ model Particular {
   title        String
   description  String
   price        Int
+}
+
+model TermsConditions {
+  id           Int       @id @default(autoincrement())
+  quotation    Quotation @relation(fields: [quotation_id], references: [id], onDelete: Cascade)
+  quotation_id Int
+  text         String
 }

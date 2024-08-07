@@ -15,14 +15,16 @@ const styles = StyleSheet.create({
 
   particulars: {
     fontSize: 12,
+    fontWeight: 'semibold',
     paddingVertical: 8,
     paddingHorizontal: 8,
-    width: '35%',
+    width: '30%',
     borderRightColor: borderColor,
     borderRightWidth: 2,
   },
 
   price: {
+    fontWeight: 'semibold',
     fontSize: 12,
     width: '20%',
     paddingVertical: 8,
@@ -30,12 +32,13 @@ const styles = StyleSheet.create({
   },
 
   description: {
+    fontWeight: 'semibold',
     borderRightWidth: 2,
     borderRightColor: borderColor,
     fontSize: 12,
     paddingVertical: 8,
     paddingHorizontal: 8,
-    width: '45%',
+    width: '50%',
   },
 });
 

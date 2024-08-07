@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <nav ref={touchRef} className="py-6">
-      <div className="relative z-[60] container px-6 rounded-md bg-white bg-opacity-50 backdrop-blur-sm shadow-md py-4">
+      <div className="relative z-[60] container px-6 rounded-md bg-white bg-opacity-70 backdrop-blur-sm shadow-md py-4">
         <div className="flex items-center justify-between">
           <Link
             href="/panel"
@@ -55,6 +55,9 @@ const Navbar = () => {
               return (
                 <li key={index}>
                   <Link
+                    onClick={() => {
+                      setOpen(false);
+                    }}
                     href={item.url}
                     className="hover:text-primary-200 px-4 py-2 inline-block font-medium"
                   >

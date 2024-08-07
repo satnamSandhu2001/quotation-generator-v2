@@ -8,6 +8,7 @@ import InvoiceTerms from './InvoiceTerms';
 
 const styles = StyleSheet.create({
   page: {
+    fontWeight: 400,
     backgroundColor: '#fff',
     fontSize: 11,
     paddingTop: 50,
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const PdfDocument = (props) => {
+const Invoice = (props) => {
   return (
     <>
       <Document>
@@ -35,12 +36,16 @@ const PdfDocument = (props) => {
           <InvoiceItemsTable
             particulars={props.particulars}
             total={props.total}
+            currency={props.currency}
           />
-          <InvoiceTerms />
+          <InvoiceTerms
+            date={props.date}
+            termsConditions={props.termsConditions}
+          />
         </Page>
       </Document>
     </>
   );
 };
 
-export default PdfDocument;
+export default Invoice;

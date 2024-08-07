@@ -14,7 +14,7 @@ module.exports = {
         'dark-200': 'var(--dark-200)',
       },
       fontFamily: {
-        sans: ['var(--font-dejaVuSans)'],
+        sans: ['var(--font-roboto)'],
       },
     },
   },

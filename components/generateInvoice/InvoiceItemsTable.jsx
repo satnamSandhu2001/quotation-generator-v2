@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 12,
+    lineHeight: 1.25,
   },
 });
 
@@ -17,7 +18,7 @@ const InvoiceItemsTable = (props) => {
     <View style={styles.tableContainer}>
       <InvoiceTableHeader />
       <InvoiceTableRow items={props.particulars} />
-      <InvoiceTableFooter total={props.total} />
+      <InvoiceTableFooter total={props.total} currency={props.currency} />
     </View>
   );
 };
