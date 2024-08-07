@@ -3,12 +3,10 @@ import { Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   titleContainer: {
-    marginTop: 18,
+    marginTop: 15,
   },
   title: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: '12px',
     textAlign: 'center',
     lineHeight: 2,
   },

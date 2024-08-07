@@ -1,13 +1,17 @@
 'use client';
 
 import { InputPrimary } from '@/components/ui/Input';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Particulars from './Particulars';
 import ButtonPrimary from '@/components/ui/ButtonPrimary';
 import ButtonSecondary from '@/components/ui/ButtonSecondary';
-import Main from '@/components/generateInvoice/Main';
+const Main = dynamic(
+  () => import('../../../../components/generateInvoice/Main'),
+  { ssr: false }
+);
 import { InputSelect } from '@/components/ui/inputSelect';
 import TermsConditions from './TermsConditions';
+import dynamic from 'next/dynamic';
 
 function Component({
   currency,

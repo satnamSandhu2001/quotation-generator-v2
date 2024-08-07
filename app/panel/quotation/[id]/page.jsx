@@ -20,11 +20,10 @@ function Page() {
   async function getData() {
     setloading(true);
     let quotation = await getQuotationById(Number(id));
-    console.log(quotation.date);
     setdata({
       ...quotation,
-      date: quotation.date.toISOString().split('T')[0],
-      termsConditions: quotation?.termsConditions.map((t) => t.text),
+      date: quotation?.date?.toISOString().split('T')[0],
+      termsConditions: quotation?.termsConditions?.map((t) => t.text),
     });
     setloading(false);
   }

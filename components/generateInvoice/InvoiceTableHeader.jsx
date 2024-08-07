@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     alignItems: 'center',
     flexGrow: 1,
+    fontWeight: 600,
   },
 
   particulars: {
-    fontSize: 12,
-    fontWeight: 'semibold',
+    fontSize: '12px',
     paddingVertical: 8,
     paddingHorizontal: 8,
     width: '30%',
@@ -23,8 +23,7 @@ const styles = StyleSheet.create({
   },
 
   price: {
-    fontWeight: 'semibold',
-    fontSize: 12,
+    fontSize: '12px',
     width: '20%',
     paddingVertical: 8,
     paddingHorizontal: 8,
@@ -32,10 +31,9 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    fontWeight: 'semibold',
     borderRightWidth: 1,
     borderRightColor: TABLE_COLOR,
-    fontSize: 12,
+    fontSize: '12px',
     paddingVertical: 8,
     paddingHorizontal: 8,
     width: '50%',

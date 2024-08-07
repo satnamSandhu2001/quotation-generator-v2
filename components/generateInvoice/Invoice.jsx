@@ -1,16 +1,31 @@
+'use client';
 import React from 'react';
-import { Page, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import { Page, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
 import logo from '@/public/assets/images/logo.png';
 import InvoiceTitle from './InvoiceTitle';
 import BillTo from './BillTo';
 import InvoiceItemsTable from './InvoiceItemsTable';
 import InvoiceTerms from './InvoiceTerms';
 
+Font.register({
+  family: 'Nunito',
+  fonts: [
+    {
+      src: '/assets/fonts/Nunito-Regular.ttf',
+      fontWeight: 400,
+    },
+    {
+      src: '/assets/fonts/Nunito-Bold.ttf',
+      fontWeight: 700,
+    },
+  ],
+});
+
 const styles = StyleSheet.create({
   page: {
-    fontWeight: 400,
+    fontFamily: 'Nunito',
     backgroundColor: '#fff',
-    fontSize: 11,
+    fontSize: '12px',
     paddingTop: 50,
     paddingLeft: 70,
     paddingRight: 70,

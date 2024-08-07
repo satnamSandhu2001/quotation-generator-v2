@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   billTo: {
-    fontSize: 16,
-    fontWeight: 'extrabold',
+    fontSize: '16px',
   },
 });
 

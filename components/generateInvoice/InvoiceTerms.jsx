@@ -10,21 +10,20 @@ const styles = StyleSheet.create({
   },
   bullet: {
     height: '100%',
+    fontWeight: 600,
   },
   titleContainer: {
     marginTop: 12,
-    color: '#202020',
   },
   reportTitle: {
     marginBottom: 7,
-    fontSize: 12,
-    fontWeight: 'extrabold',
+    fontSize: '12px',
+    fontWeight: 600,
   },
   date: {
     marginTop: 8,
     textAlign: 'right',
-    fontSize: 11,
-    fontWeight: 'extrabold',
+    fontSize: '12px',
   },
 });
 

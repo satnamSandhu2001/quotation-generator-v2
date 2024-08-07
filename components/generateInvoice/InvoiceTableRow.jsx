@@ -10,12 +10,10 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 1,
     alignItems: 'stretch',
-    fontStyle: 'bold',
-    color: '#202020',
     lineHeight: 1.5,
   },
   title: {
-    fontSize: 11,
+    fontSize: '12px',
     paddingVertical: 5,
     paddingHorizontal: 8,
     width: '30%',
@@ -24,7 +22,7 @@ const styles = StyleSheet.create({
   },
 
   price: {
-    fontSize: 11,
+    fontSize: '12px',
     width: '20%',
     textAlign: 'right',
     paddingVertical: 5,
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
   description: {
     borderRightColor: TABLE_COLOR,
     borderRightWidth: 1,
-    fontSize: 11,
+    fontSize: '12px',
     paddingVertical: 5,
     paddingHorizontal: 8,
     width: '50%',
