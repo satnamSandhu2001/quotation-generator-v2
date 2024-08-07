@@ -10,6 +10,7 @@ const Home = async () => {
       <Image
         src={bg_img}
         alt=""
+        priority
         className="fixed top-0 left-0 -z-10 w-screen h-screen object-cover"
       />
       <div className="container flex flex-col items-center justify-center w-full min-h-[80vh]">

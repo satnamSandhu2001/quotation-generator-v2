@@ -1,15 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-
-const borderColor = '#645eeb';
+import { TABLE_COLOR } from '@/lib/constants';
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    borderColor: '#645eeb',
-    borderBottomWidth: 2,
-    borderLeftWidth: 2,
-    borderRightWidth: 2,
+    borderColor: TABLE_COLOR,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
     alignItems: 'center',
     fontSize: 11,
     fontStyle: 'bold',
@@ -17,8 +16,8 @@ const styles = StyleSheet.create({
   description: {
     width: '80%',
     textAlign: 'left',
-    borderRightColor: borderColor,
-    borderRightWidth: 2,
+    borderRightColor: TABLE_COLOR,
+    borderRightWidth: 1,
     fontSize: 11,
     paddingVertical: 5,
     fontWeight: 'extrabold',
@@ -40,7 +39,7 @@ const InvoiceTableFooter = (props) => {
       <Text style={styles.description}>Total </Text>
       <Text style={styles.total}>
         {props.currency}
-        {props.total} /-
+        {props.total}
       </Text>
     </View>
   );

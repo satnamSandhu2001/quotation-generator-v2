@@ -1,15 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { TABLE_COLOR } from '@/lib/constants';
 
-const borderColor = '#fff';
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#645eeb',
-    borderColor: '#645eeb',
+    backgroundColor: TABLE_COLOR,
+    borderColor: TABLE_COLOR,
     color: '#fff',
     alignItems: 'center',
-    textAlign: 'center',
     flexGrow: 1,
   },
 
@@ -19,8 +18,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 8,
     width: '30%',
-    borderRightColor: borderColor,
-    borderRightWidth: 2,
+    borderRightColor: TABLE_COLOR,
+    borderRightWidth: 1,
   },
 
   price: {
@@ -29,12 +28,13 @@ const styles = StyleSheet.create({
     width: '20%',
     paddingVertical: 8,
     paddingHorizontal: 8,
+    textAlign: 'right',
   },
 
   description: {
     fontWeight: 'semibold',
-    borderRightWidth: 2,
-    borderRightColor: borderColor,
+    borderRightWidth: 1,
+    borderRightColor: TABLE_COLOR,
     fontSize: 12,
     paddingVertical: 8,
     paddingHorizontal: 8,
