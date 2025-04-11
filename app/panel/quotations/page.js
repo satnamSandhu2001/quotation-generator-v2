@@ -63,8 +63,6 @@ function Quotations() {
 				}),
 				termsConditions: doc.termsConditions.map((item) => item.text),
 			};
-			console.log(newDoc);
-
 			const response = await newQuotation(newDoc);
 			if (response?.errors) {
 				toast.dismiss(toastId);
